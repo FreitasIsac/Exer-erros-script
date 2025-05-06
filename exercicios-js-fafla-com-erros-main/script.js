@@ -76,7 +76,7 @@ const btns = [
     func: () => {
       const a = Number(prompt("Digite o primeiro número:"));
       const b = Number(prompt("Digite o segundo número:"));
-      alert(`Resultado: ${a - b}`);
+      alert(b===0? "Divisão por zero!" : `Resultado: ${a/b}`);
     },
   },
   {
@@ -84,7 +84,7 @@ const btns = [
     func: () => {
       const a = Number(prompt("Digite o primeiro número:"));
       const b = Number(prompt("Digite o segundo número:"));
-      alert(`Resultado: ${a / b}`);
+      alert(`Resultado: ${a * b}`);
     },
   },
   {
@@ -149,7 +149,7 @@ const btns = [
       let pares = 0;
       for (let i = 0; i < 10; i++) {
         let num = Number(prompt(`Digite o número ${i + 1}:`));
-        if (num % 2 === 1) pares++;
+        if (num % 2 === 0) pares++;
       }
       alert(`Quantidade de pares: ${pares}`);
     },
@@ -157,7 +157,7 @@ const btns = [
   {
     nome: "Ex. 17 - Maior de 5 números",
     func: () => {
-      let maior = 0;
+      let maior = -Infinity;
       for (let i = 0; i < 5; i++) {
         let num = Number(prompt(`Digite o número ${i + 1}:`));
         if (num > maior) maior = num;
@@ -206,7 +206,7 @@ const btns = [
       let nomes = [];
       for (let i = 0; i <= 5; i++) {
         let nome = prompt(`Digite o nome ${i + 1}:`);
-        if (nome.toLowerCase().startsWith("b")) nomes.push(nome);
+        if (nome.toLowerCase().startsWith("a")) nomes.push(nome);
       }
       alert(`Nomes com A: ${nomes.join(" - ")}`);
     },
@@ -221,12 +221,29 @@ const btns = [
   },
   {
     nome: "Ex. 23 - Número primo",
-    func: () => {
-      const num = Number(prompt("Digite um número:"));
-      let primo = num < 1;
-      alert(primo ? "É primo" : "Não é primo");
+    
+    function (numero) {
+        const numero = Number(prompt("Digite um número:"));
+        if (numero <= 1) return false;
+        if (numero <= 3) return true;
+    
+        if (numero % 2 === 0 || numero % 3 === 0) return false;
+    
+        for (let i = 5; i * i <= numero; i += 6) {
+            if (numero % i === 0 || numero % (i + 2) === 0) return false;
+        }
+    
+        return true;
+        
+    
+        
+    
+      }
+    
+   
+   
+
     },
-  },
   {
     nome: "Ex. 24 - Inverter nome",
     func: () => {
